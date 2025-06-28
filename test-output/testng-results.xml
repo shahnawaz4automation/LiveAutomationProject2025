@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2025-06-28T21:06:37 IST" name="Default suite" finished-at="2025-06-28T21:06:43 IST" duration-ms="5885">
+    <groups>
+    </groups>
+    <test started-at="2025-06-28T21:06:37 IST" name="Default test" finished-at="2025-06-28T21:06:43 IST" duration-ms="5885">
+      <class name="tutorialsninja.register.TestCaseRegisterFunctionality001">
+        <test-method signature="verifyRegisteringWithMandatoyFields()[pri:0, instance:tutorialsninja.register.TestCaseRegisterFunctionality001@689604d9]" started-at="2025-06-28T21:06:37 IST" name="verifyRegisteringWithMandatoyFields" finished-at="2025-06-28T21:06:43 IST" duration-ms="5818" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyRegisteringWithMandatoyFields -->
+      </class> <!-- tutorialsninja.register.TestCaseRegisterFunctionality001 -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
