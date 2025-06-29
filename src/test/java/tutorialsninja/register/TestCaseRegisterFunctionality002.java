@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 public class TestCaseRegisterFunctionality002 {
 	
 	@Test
-	public void verifyRegisteringWithAllFields() throws InterruptedException {
+	public void verifyRegisteringWithAllFields() {
 		WebDriver driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
