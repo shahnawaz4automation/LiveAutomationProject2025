@@ -30,7 +30,6 @@ public class TestCaseRegisterFunctionality002 {
 		driver.findElement(By.xpath("//input[@type='checkbox']")).click();
 		
 		driver.findElement(By.xpath("//label[text()='Yes']")).click();
-		Thread.sleep(1000);
 		driver.findElement(By.xpath("//input[@value='Continue']")).click();
 		
 		Assert.assertEquals(driver.findElement(By.linkText("Logout")).getText(), "Logout", "Asseted Logout option is found");
