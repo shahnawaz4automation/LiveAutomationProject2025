@@ -36,7 +36,6 @@ public class TestCaseRegisterFunctionality010 {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("arguments[0].click();", driver.findElement(By.xpath("//span[text()='My Account']")));
 		
-		//driver.findElement(By.xpath("//span[text()='My Account']")).click();
 		driver.findElement(By.linkText("Register")).click();
 
 		driver.findElement(By.id("input-firstname")).sendKeys("Arun");

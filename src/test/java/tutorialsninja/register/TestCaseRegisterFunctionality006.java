@@ -9,6 +9,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import utils.CommonUtils;
+
 public class TestCaseRegisterFunctionality006 {
 	@Test
 	public void verifyRegisteringAccountBySayingNoToNewsletter() {
@@ -23,7 +25,7 @@ public class TestCaseRegisterFunctionality006 {
 		
 		driver.findElement(By.id("input-firstname")).sendKeys("Arun");
 		driver.findElement(By.id("input-lastname")).sendKeys("Motoori");
-		driver.findElement(By.id("input-email")).sendKeys(generateNewEmail());
+		driver.findElement(By.id("input-email")).sendKeys(CommonUtils.generateBrandNewEmail());
 		driver.findElement(By.id("input-telephone")).sendKeys("1234567890");
 		driver.findElement(By.id("input-password")).sendKeys("12345");
 		driver.findElement(By.id("input-confirm")).sendKeys("12345");
@@ -39,8 +41,4 @@ public class TestCaseRegisterFunctionality006 {
 		driver.quit();
 	
 	}
-	public String generateNewEmail() {
-		return (new Date().toString().replaceAll("\\s", "").replaceAll("\\:", "") + "@gmail.com");
-	}
-
 }
