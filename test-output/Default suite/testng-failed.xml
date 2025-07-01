@@ -3,11 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="tutorialsninja.register.TestCaseRegisterFunctionality008">
+      <class name="tutorialsninja.register.TestCaseRegisterFunctionality010">
         <methods>
-          <include name="verifyRegisteringAccountByProvidingMismatchingPasswords"/>
+          <include name="verifyRegisteringUsingInvalidEmailPlusOffline"/>
         </methods>
-      </class> <!-- tutorialsninja.register.TestCaseRegisterFunctionality008 -->
+      </class> <!-- tutorialsninja.register.TestCaseRegisterFunctionality010 -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
