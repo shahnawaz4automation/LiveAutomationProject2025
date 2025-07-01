@@ -2,16 +2,20 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-07-01T18:05:31 IST" name="Default suite" finished-at="2025-07-01T18:05:39 IST" duration-ms="7479">
+  <suite started-at="2025-07-01T18:12:01 IST" name="Default suite" finished-at="2025-07-01T18:12:08 IST" duration-ms="7184">
     <groups>
     </groups>
-    <test started-at="2025-07-01T18:05:31 IST" name="Default test" finished-at="2025-07-01T18:05:39 IST" duration-ms="7479">
-      <class name="tutorialsninja.register.TestCaseRegisterFunctionality013">
-        <test-method signature="verifyPlaceHoldersOfTextFieldsInRegisterAccountPage()[pri:0, instance:tutorialsninja.register.TestCaseRegisterFunctionality013@35d019a3]" started-at="2025-07-01T18:05:31 IST" name="verifyPlaceHoldersOfTextFieldsInRegisterAccountPage" finished-at="2025-07-01T18:05:39 IST" duration-ms="7390" status="PASS">
+    <test started-at="2025-07-01T18:12:01 IST" name="Default test" finished-at="2025-07-01T18:12:08 IST" duration-ms="7184">
+      <class name="tutorialsninja.register.TestCaseRegisterFunctionality014">
+        <test-method signature="verifyMandatoryFieldsSymbolAndColorInRegisterAccountPage()[pri:0, instance:tutorialsninja.register.TestCaseRegisterFunctionality014@2a4fb17b]" started-at="2025-07-01T18:12:01 IST" name="verifyMandatoryFieldsSymbolAndColorInRegisterAccountPage" finished-at="2025-07-01T18:12:08 IST" duration-ms="6493" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyPlaceHoldersOfTextFieldsInRegisterAccountPage -->
-      </class> <!-- tutorialsninja.register.TestCaseRegisterFunctionality013 -->
+        </test-method> <!-- verifyMandatoryFieldsSymbolAndColorInRegisterAccountPage -->
+        <test-method is-config="true" signature="teardown()[pri:0, instance:tutorialsninja.register.TestCaseRegisterFunctionality014@2a4fb17b]" started-at="2025-07-01T18:12:08 IST" name="teardown" finished-at="2025-07-01T18:12:08 IST" duration-ms="577" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- teardown -->
+      </class> <!-- tutorialsninja.register.TestCaseRegisterFunctionality014 -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
