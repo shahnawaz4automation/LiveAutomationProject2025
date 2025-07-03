@@ -3,12 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="tutorialsninja.register.TestCaseRegisterFunctionality014">
+      <class name="tutorialsninja.register.TestCaseRegisterFunctionality017">
         <methods>
+          <include name="verifyRegisteringAccountAndCheckingPasswordComplexityStandards" invocation-numbers="0 1 2 3 4"/>
           <include name="teardown"/>
-          <include name="verifyMandatoryFieldsSymbolAndColorInRegisterAccountPage"/>
         </methods>
-      </class> <!-- tutorialsninja.register.TestCaseRegisterFunctionality014 -->
+      </class> <!-- tutorialsninja.register.TestCaseRegisterFunctionality017 -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
