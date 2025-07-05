@@ -1,11 +1,7 @@
 package tutorialsninja.register;
 
-import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.IOException;
 import java.time.Duration;
-
-import javax.imageio.ImageIO;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -17,8 +13,7 @@ import org.openqa.selenium.io.FileHandler;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import ru.yandex.qatools.ashot.comparison.ImageDiff;
-import ru.yandex.qatools.ashot.comparison.ImageDiffer;
+import utils.CommonUtils;
 
 public class TestCaseRegisterFunctionality010 {
 	@Test
@@ -46,6 +41,7 @@ public class TestCaseRegisterFunctionality010 {
 		driver.findElement(By.id("input-confirm")).sendKeys("12345");
 		driver.findElement(By.xpath("//input[@name='newsletter'][@value='1']")).click();
 		driver.findElement(By.name("agree")).click();
+		driver.findElement(By.xpath("//h1[text()='Register Account']")).click();
 		driver.findElement(By.xpath("//input[@value='Continue']")).click();
 
 		Thread.sleep(3000);
@@ -55,10 +51,11 @@ public class TestCaseRegisterFunctionality010 {
 
 		Thread.sleep(3000);
 
-		Assert.assertFalse(compareTwoScreenshots(System.getProperty("user.dir") + "\\Screenshots\\sc1Actual.png",System.getProperty("user.dir") + "\\Screenshots\\sc1Expected.png"));
+		Assert.assertFalse(CommonUtils.compareTwoScreenshots(System.getProperty("user.dir") + "\\Screenshots\\sc1Actual.png",System.getProperty("user.dir") + "\\Screenshots\\sc1Expected.png"));
 
 		driver.findElement(By.id("input-email")).clear();
 		driver.findElement(By.id("input-email")).sendKeys("amotoori@");
+		driver.findElement(By.xpath("//h1[text()='Register Account']")).click();
 		driver.findElement(By.xpath("//input[@value='Continue']")).click();
 
 		Thread.sleep(2000);
@@ -68,11 +65,12 @@ public class TestCaseRegisterFunctionality010 {
 
 		Thread.sleep(2000);
 
-		Assert.assertFalse(compareTwoScreenshots(System.getProperty("user.dir") + "\\Screenshots\\sc2Actual.png",
+		Assert.assertFalse(CommonUtils.compareTwoScreenshots(System.getProperty("user.dir") + "\\Screenshots\\sc2Actual.png",
 				System.getProperty("user.dir") + "\\Screenshots\\sc2Expected.png"));
 
 		driver.findElement(By.id("input-email")).clear();
 		driver.findElement(By.id("input-email")).sendKeys("amotoori@gmail");
+		driver.findElement(By.xpath("//h1[text()='Register Account']")).click();
 		driver.findElement(By.xpath("//input[@value='Continue']")).click();
 
 		Thread.sleep(2000);
@@ -93,20 +91,10 @@ public class TestCaseRegisterFunctionality010 {
 
 		Thread.sleep(3000);
 
-		Assert.assertFalse(compareTwoScreenshots(System.getProperty("user.dir") + "\\Screenshots\\sc3Actual.png",
+		Assert.assertFalse(CommonUtils.compareTwoScreenshots(System.getProperty("user.dir") + "\\Screenshots\\sc3Actual.png",
 				System.getProperty("user.dir") + "\\Screenshots\\sc3Expected.png"));
 
 		driver.quit();
 
-	}
-
-	public boolean compareTwoScreenshots(String actualImagePath, String expectedImagePath) throws IOException {
-		BufferedImage actualImg = ImageIO.read(new File(actualImagePath));
-		BufferedImage expectedImg = ImageIO.read(new File(expectedImagePath));
-
-		ImageDiffer imgDiffer = new ImageDiffer();
-		ImageDiff imgDifference = imgDiffer.makeDiff(expectedImg, actualImg);
-
-		return imgDifference.hasDiff();
 	}
 }
