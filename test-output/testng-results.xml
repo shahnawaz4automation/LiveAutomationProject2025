@@ -2,16 +2,16 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-07-05T22:28:01 IST" name="Default suite" finished-at="2025-07-05T22:29:41 IST" duration-ms="100228">
+  <suite started-at="2025-07-06T20:56:49 IST" name="Default suite" finished-at="2025-07-06T20:56:55 IST" duration-ms="5872">
     <groups>
     </groups>
-    <test started-at="2025-07-05T22:28:01 IST" name="Default test" finished-at="2025-07-05T22:29:41 IST" duration-ms="100228">
-      <class name="tutorialsninja.register.TestCaseRegisterFunctionality018">
-        <test-method signature="verifyRegisteringAccountFieldsHeightWidthAligment()[pri:0, instance:tutorialsninja.register.TestCaseRegisterFunctionality018@313ac989]" started-at="2025-07-05T22:28:01 IST" name="verifyRegisteringAccountFieldsHeightWidthAligment" finished-at="2025-07-05T22:29:41 IST" duration-ms="100083" status="PASS">
+    <test started-at="2025-07-06T20:56:49 IST" name="Default test" finished-at="2025-07-06T20:56:55 IST" duration-ms="5872">
+      <class name="tutorialsninja.register.TestCaseRegisterFunctionality020">
+        <test-method signature="verifyPrivacyPolicyFieldOnRegisterAccountPage()[pri:0, instance:tutorialsninja.register.TestCaseRegisterFunctionality020@35d019a3]" started-at="2025-07-06T20:56:49 IST" name="verifyPrivacyPolicyFieldOnRegisterAccountPage" finished-at="2025-07-06T20:56:55 IST" duration-ms="5782" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyRegisteringAccountFieldsHeightWidthAligment -->
-      </class> <!-- tutorialsninja.register.TestCaseRegisterFunctionality018 -->
+        </test-method> <!-- verifyPrivacyPolicyFieldOnRegisterAccountPage -->
+      </class> <!-- tutorialsninja.register.TestCaseRegisterFunctionality020 -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
