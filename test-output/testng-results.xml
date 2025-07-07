@@ -2,16 +2,16 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-07-06T21:01:42 IST" name="Default suite" finished-at="2025-07-06T21:01:47 IST" duration-ms="4846">
+  <suite started-at="2025-07-07T21:00:07 IST" name="Default suite" finished-at="2025-07-07T21:00:26 IST" duration-ms="19076">
     <groups>
     </groups>
-    <test started-at="2025-07-06T21:01:42 IST" name="Default test" finished-at="2025-07-06T21:01:47 IST" duration-ms="4846">
-      <class name="tutorialsninja.register.TestCaseRegisterFunctionality022">
-        <test-method signature="verifyVisibiltyTogglineOfPasswordsFieldsOnRegisterAccount()[pri:0, instance:tutorialsninja.register.TestCaseRegisterFunctionality022@35d019a3]" started-at="2025-07-06T21:01:42 IST" name="verifyVisibiltyTogglineOfPasswordsFieldsOnRegisterAccount" finished-at="2025-07-06T21:01:47 IST" duration-ms="4753" status="PASS">
+    <test started-at="2025-07-07T21:00:07 IST" name="Default test" finished-at="2025-07-07T21:00:26 IST" duration-ms="19076">
+      <class name="utils.TestCaseRegisterFunctionality023">
+        <test-method signature="verifyWorkingOfEveryLinkOnRegisterAccountPage()[pri:0, instance:utils.TestCaseRegisterFunctionality023@35d019a3]" started-at="2025-07-07T21:00:07 IST" name="verifyWorkingOfEveryLinkOnRegisterAccountPage" finished-at="2025-07-07T21:00:26 IST" duration-ms="19005" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyVisibiltyTogglineOfPasswordsFieldsOnRegisterAccount -->
-      </class> <!-- tutorialsninja.register.TestCaseRegisterFunctionality022 -->
+        </test-method> <!-- verifyWorkingOfEveryLinkOnRegisterAccountPage -->
+      </class> <!-- utils.TestCaseRegisterFunctionality023 -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
