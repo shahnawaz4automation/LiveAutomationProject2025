@@ -15,7 +15,7 @@ public class CommonUtils {
 		return new Date().toString().replaceAll("\\s", "").replaceAll("\\:", "") + "@email.com";
 	}
 	
-	public static boolean compareTwoScreenshots(String actualImagePath, String expectedImagePath) throws IOException {
+	/*public static boolean compareTwoScreenshots(String actualImagePath, String expectedImagePath) throws IOException {
 		BufferedImage actualImg = ImageIO.read(new File(actualImagePath));
 		BufferedImage expectedImg = ImageIO.read(new File(expectedImagePath));
 
@@ -23,5 +23,15 @@ public class CommonUtils {
 		ImageDiff imgDifference = imgDiffer.makeDiff(expectedImg, actualImg);
 
 		return imgDifference.hasDiff();
+	}*/
+	
+	public static int compareTwoScreenshots(String actualImagePath, String expectedImagePath) throws IOException {
+		BufferedImage actualImg = ImageIO.read(new File(actualImagePath));
+		BufferedImage expectedImg = ImageIO.read(new File(expectedImagePath));
+
+		ImageDiffer imgDiffer = new ImageDiffer();
+		ImageDiff imgDifference = imgDiffer.makeDiff(expectedImg, actualImg);
+
+		return imgDifference.getDiffSize();
 	}
 }

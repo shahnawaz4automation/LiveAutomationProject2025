@@ -375,12 +375,9 @@ public class TestCaseRegisterFunctionality018 {
 		TakesScreenshot ts = (TakesScreenshot)driver;
 		File srcScreenshot = ts.getScreenshotAs(OutputType.FILE);
 		FileHandler.copy(srcScreenshot,new File(System.getProperty("user.dir")+"\\Screenshots\\registerPageActualAligment.png"));
-		try {
-			Assert.assertFalse(CommonUtils.compareTwoScreenshots(System.getProperty("user.dir")+"\\Screenshots\\registerPageActualAligment.png", System.getProperty("user.dir")+"\\Screenshots\\registerPageExpectedAligment.png"));	
-		}catch (Exception e) {
-			Assert.assertTrue(true);
-		}
 		
+		int diffSize = CommonUtils.compareTwoScreenshots(System.getProperty("user.dir")+"\\Screenshots\\registerPageActualAligment.png", System.getProperty("user.dir")+"\\Screenshots\\registerPageExpectedAligment.png");	
+		Assert.assertTrue(diffSize<50);
 		
 		driver.quit();
 		

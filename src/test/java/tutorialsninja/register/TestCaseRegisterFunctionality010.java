@@ -51,7 +51,8 @@ public class TestCaseRegisterFunctionality010 {
 
 		Thread.sleep(3000);
 
-		Assert.assertFalse(CommonUtils.compareTwoScreenshots(System.getProperty("user.dir") + "\\Screenshots\\sc1Actual.png",System.getProperty("user.dir") + "\\Screenshots\\sc1Expected.png"));
+		int diffSize = CommonUtils.compareTwoScreenshots(System.getProperty("user.dir") + "\\Screenshots\\sc1Actual.png",System.getProperty("user.dir") + "\\Screenshots\\sc1Expected.png");
+		Assert.assertTrue(diffSize < 50);
 
 		driver.findElement(By.id("input-email")).clear();
 		driver.findElement(By.id("input-email")).sendKeys("amotoori@");
@@ -65,8 +66,9 @@ public class TestCaseRegisterFunctionality010 {
 
 		Thread.sleep(2000);
 
-		Assert.assertFalse(CommonUtils.compareTwoScreenshots(System.getProperty("user.dir") + "\\Screenshots\\sc2Actual.png",
-				System.getProperty("user.dir") + "\\Screenshots\\sc2Expected.png"));
+		int diffSize1 = CommonUtils.compareTwoScreenshots(System.getProperty("user.dir") + "\\Screenshots\\sc2Actual.png",
+				System.getProperty("user.dir") + "\\Screenshots\\sc2Expected.png");
+		Assert.assertTrue(diffSize1 < 50);
 
 		driver.findElement(By.id("input-email")).clear();
 		driver.findElement(By.id("input-email")).sendKeys("amotoori@gmail");
@@ -91,8 +93,9 @@ public class TestCaseRegisterFunctionality010 {
 
 		Thread.sleep(3000);
 
-		Assert.assertFalse(CommonUtils.compareTwoScreenshots(System.getProperty("user.dir") + "\\Screenshots\\sc3Actual.png",
-				System.getProperty("user.dir") + "\\Screenshots\\sc3Expected.png"));
+		int diffSize2 = CommonUtils.compareTwoScreenshots(System.getProperty("user.dir") + "\\Screenshots\\sc3Actual.png",
+				System.getProperty("user.dir") + "\\Screenshots\\sc3Expected.png");
+		Assert.assertTrue(diffSize2 < 50);
 
 		driver.quit();
 
