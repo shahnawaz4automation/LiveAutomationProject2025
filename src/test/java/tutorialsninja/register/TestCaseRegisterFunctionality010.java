@@ -1,36 +1,54 @@
 package tutorialsninja.register;
 
-import java.io.File;
 import java.time.Duration;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.io.FileHandler;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import utils.CommonUtils;
-
 public class TestCaseRegisterFunctionality010 {
-	@Test
-	public void verifyRegisteringUsingInvalidEmailPlusOffline() throws Exception {
 
-		ChromeOptions options = new ChromeOptions();
-		options.addArguments("--headless=new"); // Use --headless=new instead of --headless in latest Chrome
-		options.addArguments("--window-size=1920,1080");
-		WebDriver driver = new ChromeDriver(options);
-		
+	WebDriver driver;
+	String browserName = "firefox";
+
+	@BeforeMethod
+	public void setUp() {
+
+		if (browserName.equals("chrome")) {
+			driver = new ChromeDriver();
+		} else if (browserName.equals("edge")) {
+			driver = new EdgeDriver();
+		} else if (browserName.equals("firefox")) {
+			driver = new FirefoxDriver();
+		}
+
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
 		driver.get("https://tutorialsninja.com/demo");
-		
+
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("arguments[0].click();", driver.findElement(By.xpath("//span[text()='My Account']")));
-		
+
+		driver.findElement(By.linkText("Register")).click();
+	}
+
+	@AfterMethod
+	public void tearDown() {
+		if (driver != null) {
+			driver.quit();
+		}
+	}
+
+	@Test
+	public void verifyRegisteringUsingInvalidEmailPlusOffline() {
+
 		driver.findElement(By.linkText("Register")).click();
 
 		driver.findElement(By.id("input-firstname")).sendKeys("Arun");
@@ -43,42 +61,32 @@ public class TestCaseRegisterFunctionality010 {
 		driver.findElement(By.name("agree")).click();
 		driver.findElement(By.xpath("//h1[text()='Register Account']")).click();
 		driver.findElement(By.xpath("//input[@value='Continue']")).click();
-
-		Thread.sleep(3000);
-
-		File srcScreenshot1 = driver.findElement(By.xpath("//form[@class='form-horizontal']")).getScreenshotAs(OutputType.FILE);
-		FileHandler.copy(srcScreenshot1, new File(System.getProperty("user.dir") + "\\Screenshots\\sc1Actual.png"));
-
-		Thread.sleep(3000);
-
-		int diffSize = CommonUtils.compareTwoScreenshots(System.getProperty("user.dir") + "\\Screenshots\\sc1Actual.png",System.getProperty("user.dir") + "\\Screenshots\\sc1Expected.png");
-		Assert.assertTrue(diffSize < 50);
+		
+		if(browserName.equals("chrome") || browserName.equals("edge")) {
+			Assert.assertEquals(driver.findElement(By.id("input-email")).getAttribute("validationMessage"),"Please include an '@' in the email address. 'amotoori' is missing an '@'.");
+		} else if(browserName.equals("firefox")) {
+			System.out.println(driver.findElement(By.id("input-email")).getAttribute("validationMessage"));
+			Assert.assertEquals(driver.findElement(By.id("input-email")).getAttribute("validationMessage"),"Please enter an email address.");
+		}
 
 		driver.findElement(By.id("input-email")).clear();
 		driver.findElement(By.id("input-email")).sendKeys("amotoori@");
 		driver.findElement(By.xpath("//h1[text()='Register Account']")).click();
 		driver.findElement(By.xpath("//input[@value='Continue']")).click();
-
-		Thread.sleep(2000);
-
-		File srcScreenshot2 = driver.findElement(By.xpath("//form[@class='form-horizontal']")).getScreenshotAs(OutputType.FILE);
-		FileHandler.copy(srcScreenshot2, new File(System.getProperty("user.dir") + "\\Screenshots\\sc2Actual.png"));
-
-		Thread.sleep(2000);
-
-		int diffSize1 = CommonUtils.compareTwoScreenshots(System.getProperty("user.dir") + "\\Screenshots\\sc2Actual.png",
-				System.getProperty("user.dir") + "\\Screenshots\\sc2Expected.png");
-		Assert.assertTrue(diffSize1 < 50);
-
+		
+		if(browserName.equals("chrome") || browserName.equals("edge")) {
+			Assert.assertEquals(driver.findElement(By.id("input-email")).getAttribute("validationMessage"),"Please enter a part following '@'. 'amotoori@' is incomplete.");
+		} else if(browserName.equals("firefox")) {
+			System.out.println(driver.findElement(By.id("input-email")).getAttribute("validationMessage"));
+			Assert.assertEquals(driver.findElement(By.id("input-email")).getAttribute("validationMessage"),"Please enter an email address.");
+		}
+		
 		driver.findElement(By.id("input-email")).clear();
 		driver.findElement(By.id("input-email")).sendKeys("amotoori@gmail");
 		driver.findElement(By.xpath("//h1[text()='Register Account']")).click();
 		driver.findElement(By.xpath("//input[@value='Continue']")).click();
 
-		Thread.sleep(2000);
-
 		String expectedWarningMessage = "E-Mail Address does not appear to be valid!";
-		Thread.sleep(2000);
 		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='input-email']/following-sibling::div")).getText(),
 				expectedWarningMessage);
 
@@ -86,18 +94,11 @@ public class TestCaseRegisterFunctionality010 {
 		driver.findElement(By.id("input-email")).sendKeys("amotoori@gmail.");
 		driver.findElement(By.xpath("//input[@value='Continue']")).click();
 
-		Thread.sleep(3000);
-
-		File srcScreenshot3 = driver.findElement(By.xpath("//form[@class='form-horizontal']")).getScreenshotAs(OutputType.FILE);
-		FileHandler.copy(srcScreenshot3, new File(System.getProperty("user.dir") + "\\Screenshots\\sc3Actual.png"));
-
-		Thread.sleep(3000);
-
-		int diffSize2 = CommonUtils.compareTwoScreenshots(System.getProperty("user.dir") + "\\Screenshots\\sc3Actual.png",
-				System.getProperty("user.dir") + "\\Screenshots\\sc3Expected.png");
-		Assert.assertTrue(diffSize2 < 50);
-
-		driver.quit();
-
+		if(browserName.equals("chrome") || browserName.equals("edge")) {
+			Assert.assertEquals(driver.findElement(By.id("input-email")).getAttribute("validationMessage"),"'.' is used at a wrong position in 'gmail.'.");
+		} else if(browserName.equals("firefox")) {
+			System.out.println(driver.findElement(By.id("input-email")).getAttribute("validationMessage"));
+			Assert.assertEquals(driver.findElement(By.id("input-email")).getAttribute("validationMessage"),"Please enter an email address.");
+		}
 	}
 }

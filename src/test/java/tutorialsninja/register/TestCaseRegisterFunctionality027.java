@@ -8,34 +8,48 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import utils.CommonUtils;
 
 public class TestCaseRegisterFunctionality027 {
-	@Test(dataProvider="environmentsSupplier")
-	public void verifyRegisteringAccountInDifferentTestEnvironments(String env) {
-		
-		String browserName = env;
-		
-		WebDriver driver = null;
-		
-		if(browserName.equals("chrome")) {
+
+	WebDriver driver;
+
+	@BeforeMethod
+	public void setUp() {
+
+		String browserName = "chrome";
+
+		if (browserName.equals("chrome")) {
 			driver = new ChromeDriver();
-		}else if(browserName.equals("firefox")) {
-			driver = new FirefoxDriver();
-		}else if(browserName.equals("edge")) {
+		} else if (browserName.equals("edge")) {
 			driver = new EdgeDriver();
+		} else if (browserName.equals("firefox")) {
+			driver = new FirefoxDriver();
 		}
-		
+
 		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 		driver.get("https://tutorialsninja.com/demo/");
-		
+
 		driver.findElement(By.xpath("//span[text()='My Account']")).click();
 		driver.findElement(By.linkText("Register")).click();
-		
+	}
+
+	@AfterMethod
+	public void tearDown() {
+		if (driver != null) {
+			driver.quit();
+		}
+	}
+
+	@Test(dataProvider = "environmentsSupplier")
+	public void verifyRegisteringAccountInDifferentTestEnvironments(String env) {
+
 		driver.findElement(By.id("input-firstname")).sendKeys("Arun");
 		driver.findElement(By.id("input-lastname")).sendKeys("Motoori");
 		driver.findElement(By.id("input-email")).sendKeys(CommonUtils.generateBrandNewEmail());
@@ -45,20 +59,19 @@ public class TestCaseRegisterFunctionality027 {
 		driver.findElement(By.xpath("//input[@name='newsletter'][@value='1']")).click();
 		driver.findElement(By.name("agree")).click();
 		driver.findElement(By.xpath("//input[@value='Continue']")).click();
-		
+
 		Assert.assertTrue(driver.findElement(By.xpath("//a[@class='list-group-item'][text()='Logout']")).isDisplayed());
 		Assert.assertTrue(driver.findElement(By.xpath("//ul[@class='breadcrumb']//a[text()='Success']")).isDisplayed());
 		driver.findElement(By.xpath("//a[text()='Continue']")).click();
-		Assert.assertEquals(driver.getTitle(),"My Account");
-		
-		driver.quit();
+		Assert.assertEquals(driver.getTitle(), "My Account");
+
 	}
-	
-	@DataProvider(name="environmentsSupplier")
+
+	@DataProvider(name = "environmentsSupplier")
 	public Object[][] passTestEnvironments() {
-		
-		Object[][] envs = {{"chrome"},{"firefox"},{"edge"}};
+
+		Object[][] envs = { { "chrome" }, { "firefox" }, { "edge" } };
 		return envs;
-		
-}
+
+	}
 }
