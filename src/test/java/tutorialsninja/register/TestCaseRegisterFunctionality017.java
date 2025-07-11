@@ -63,7 +63,7 @@ public class TestCaseRegisterFunctionality017 {
 		String warningMessage = "Password entered is not matching the Complexity standards";
 
 		Assert.assertEquals(
-				driver.findElement(By.xpath("//input[@id='input-password]/following-sibling::div")).getText(),
+				driver.findElement(By.xpath("//input[@id='input-password']/following-sibling::div")).getText(),
 				warningMessage);
 		Assert.assertFalse(
 				driver.findElement(By.xpath("//ul[@class='breadcrumb']//a[text()='Success']")).isDisplayed());

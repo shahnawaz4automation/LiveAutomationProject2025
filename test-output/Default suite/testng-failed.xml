@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="tutorialsninja.register.TestCaseRegisterFunctionality011">
+      <class name="tutorialsninja.register.TestCaseRegisterFunctionality018">
         <methods>
-          <include name="verifyRegisterAccountByProvidingInvalidTelephoneNumber"/>
           <include name="setUp"/>
           <include name="tearDown"/>
+          <include name="verifyRegisteringAccountFieldsHeightWidthAligment"/>
         </methods>
-      </class> <!-- tutorialsninja.register.TestCaseRegisterFunctionality011 -->
+      </class> <!-- tutorialsninja.register.TestCaseRegisterFunctionality018 -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
