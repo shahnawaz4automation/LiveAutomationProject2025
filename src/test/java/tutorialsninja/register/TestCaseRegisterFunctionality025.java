@@ -19,7 +19,7 @@ public class TestCaseRegisterFunctionality025 {
 	@BeforeMethod
 	public void setUp() {
 		
-		String browserName = "chrome";
+		String browserName = "edge";
 		
 		if (browserName.equals("chrome")) {
 			driver = new ChromeDriver();

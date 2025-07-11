@@ -15,14 +15,14 @@ import org.testng.annotations.Test;
 import utils.CommonUtils;
 
 public class TestCaseRegisterFunctionality021 {
-	
+
 	WebDriver driver;
 
 	@BeforeMethod
 	public void setUp() {
-		
+
 		String browserName = "chrome";
-		
+
 		if (browserName.equals("chrome")) {
 			driver = new ChromeDriver();
 		} else if (browserName.equals("edge")) {
@@ -38,17 +38,17 @@ public class TestCaseRegisterFunctionality021 {
 		driver.findElement(By.xpath("//span[text()='My Account']")).click();
 		driver.findElement(By.linkText("Register")).click();
 	}
-	
+
 	@AfterMethod
 	public void tearDown() {
-		if(driver!=null) {
+		if (driver != null) {
 			driver.quit();
 		}
 	}
-	
+
 	@Test
 	public void verifyRegisteringAccountWithoutPrivacyPolicySelection() {
-				
+
 		driver.findElement(By.id("input-firstname")).sendKeys("Arun");
 		driver.findElement(By.id("input-lastname")).sendKeys("Motoori");
 		driver.findElement(By.id("input-email")).sendKeys(CommonUtils.generateBrandNewEmail());
@@ -56,10 +56,12 @@ public class TestCaseRegisterFunctionality021 {
 		driver.findElement(By.id("input-password")).sendKeys("12345");
 		driver.findElement(By.id("input-confirm")).sendKeys("12345");
 		driver.findElement(By.xpath("//input[@value='Continue']")).click();
-		
+
 		String expectedWarningMessage = "Warning: You must agree to the Privacy Policy!";
-		Assert.assertEquals(driver.findElement(By.xpath("//div[@class='alert alert-danger alert-dismissible']")).getText(), expectedWarningMessage);
-		
+		Assert.assertEquals(
+				driver.findElement(By.xpath("//div[@class='alert alert-danger alert-dismissible']")).getText(),
+				expectedWarningMessage);
+
 	}
 
 }

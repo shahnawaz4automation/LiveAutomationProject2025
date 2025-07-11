@@ -19,7 +19,7 @@ public class TestCaseRegisterFunctionality020 {
 	@BeforeMethod
 	public void setUp() {
 		
-		String browserName = "chrome";
+		String browserName = "edge";
 		
 		if (browserName.equals("chrome")) {
 			driver = new ChromeDriver();
@@ -48,8 +48,6 @@ public class TestCaseRegisterFunctionality020 {
 	public void verifyPrivacyPolicyFieldOnRegisterAccountPage() {
 		
 		Assert.assertFalse(driver.findElement(By.name("agree")).isSelected());
-		
-		driver.quit();
 		
 	}
 
