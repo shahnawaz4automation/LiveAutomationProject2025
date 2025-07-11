@@ -16,14 +16,14 @@ import org.testng.annotations.Test;
 import utils.CommonUtils;
 
 public class TestCaseRegisterFunctionality017 {
-	
+
 	WebDriver driver;
 
 	@BeforeMethod
 	public void setUp() {
-		
+
 		String browserName = "chrome";
-		
+
 		if (browserName.equals("chrome")) {
 			driver = new ChromeDriver();
 		} else if (browserName.equals("edge")) {
@@ -39,14 +39,14 @@ public class TestCaseRegisterFunctionality017 {
 		driver.findElement(By.xpath("//span[text()='My Account']")).click();
 		driver.findElement(By.linkText("Register")).click();
 	}
-	
+
 	@AfterMethod
 	public void tearDown() {
-		if(driver!=null) {
+		if (driver != null) {
 			driver.quit();
 		}
 	}
-	
+
 	@Test(dataProvider = "passwordSupplier")
 	public void verifyRegisteringAccountAndCheckingPasswordComplexityStandards(String passwordText) {
 
@@ -62,9 +62,19 @@ public class TestCaseRegisterFunctionality017 {
 
 		String warningMessage = "Password entered is not matching the Complexity standards";
 
-		Assert.assertEquals(
-				driver.findElement(By.xpath("//input[@id='input-password']/following-sibling::div")).getText(),
-				warningMessage);
+		boolean status = false;
+
+		try {
+			String actualWarningMessage = driver
+					.findElement(By.xpath("//input[@id='input-password']/following-sibling::div")).getText();
+			Assert.assertEquals(actualWarningMessage, warningMessage);
+			status = true;
+		} catch (Exception e) {
+			status = false;
+		}
+
+		Assert.assertTrue(status);
+
 		Assert.assertFalse(
 				driver.findElement(By.xpath("//ul[@class='breadcrumb']//a[text()='Success']")).isDisplayed());
 
