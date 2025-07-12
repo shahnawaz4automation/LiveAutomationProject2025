@@ -13,28 +13,17 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import base.Base;
 import utils.CommonUtils;
 
-public class TestCaseRegisterFunctionality006 {
+public class TestCaseRegisterFunctionality006 extends Base{
 	
 	WebDriver driver;
 
 	@BeforeMethod
 	public void setUp() {
 		
-		String browserName = "chrome";
-		
-		if (browserName.equals("chrome")) {
-			driver = new ChromeDriver();
-		} else if (browserName.equals("edge")) {
-			driver = new EdgeDriver();
-		} else if (browserName.equals("firefox")) {
-			driver = new FirefoxDriver();
-		}
-
-		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-		driver.get("https://tutorialsninja.com/demo/");
+		driver = openBrowserAndApplication();
 
 		driver.findElement(By.xpath("//span[text()='My Account']")).click();
 		driver.findElement(By.linkText("Register")).click();
