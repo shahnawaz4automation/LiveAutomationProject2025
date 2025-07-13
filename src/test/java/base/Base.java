@@ -1,18 +1,24 @@
 package base;
 
 import java.time.Duration;
+import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import utils.CommonUtils;
+
 public class Base {
 
 	WebDriver driver;
-	String browserName = "chrome";
-
+	String browserName;
+	
 	public WebDriver openBrowserAndApplication() {
+
+		Properties prop = CommonUtils.loadProperties();
+		browserName = prop.getProperty("browserName");
 
 		if (browserName.equals("chrome")) {
 			driver = new ChromeDriver();
@@ -24,7 +30,7 @@ public class Base {
 
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-		driver.get("https://tutorialsninja.com/demo/");
+		driver.get(prop.getProperty("appURL"));
 
 		return driver;
 	}
