@@ -8,13 +8,12 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class Base {
-	
+
 	WebDriver driver;
-	
+	String browserName = "chrome";
+
 	public WebDriver openBrowserAndApplication() {
-		
-		String browserName = "chrome";
-		
+
 		if (browserName.equals("chrome")) {
 			driver = new ChromeDriver();
 		} else if (browserName.equals("edge")) {
@@ -28,5 +27,9 @@ public class Base {
 		driver.get("https://tutorialsninja.com/demo/");
 
 		return driver;
+	}
+
+	public String getBrowser() {
+		return browserName;
 	}
 }

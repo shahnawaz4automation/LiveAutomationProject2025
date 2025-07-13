@@ -40,8 +40,7 @@ public class TestCaseRegisterFunctionality001 extends Base {
 		driver.findElement(By.xpath("//input[@type='checkbox']")).click();
 		driver.findElement(By.xpath("//input[@value='Continue']")).click();
 
-		Assert.assertEquals(driver.findElement(By.linkText("Logout")).getText(), "Logout",
-				"Asseted Logout option is found");
+		Assert.assertEquals(driver.findElement(By.linkText("Logout")).getText(), "Logout");
 
 		String actualTextDetails = driver.findElement(By.xpath("//div[@id='content']")).getText();
 

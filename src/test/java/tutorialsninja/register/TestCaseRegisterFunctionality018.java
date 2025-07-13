@@ -21,6 +21,7 @@ import utils.CommonUtils;
 public class TestCaseRegisterFunctionality018 extends Base {
 
 	WebDriver driver;
+	String browserName = getBrowser();
 
 	@BeforeMethod
 	public void setUp() {

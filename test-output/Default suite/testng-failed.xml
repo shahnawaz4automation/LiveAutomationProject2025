@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="tutorialsninja.register.TestCaseRegisterFunctionality027SingleBrowser">
+      <class name="tutorialsninja.register.TestCaseRegisterFunctionality018">
         <methods>
-          <include name="verifyRegisteringAccountInDifferentTestEnvironments"/>
-          <include name="tearDown"/>
           <include name="setUp"/>
+          <include name="verifyRegisteringAccountFieldsHeightWidthAligment"/>
+          <include name="tearDown"/>
         </methods>
-      </class> <!-- tutorialsninja.register.TestCaseRegisterFunctionality027SingleBrowser -->
+      </class> <!-- tutorialsninja.register.TestCaseRegisterFunctionality018 -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

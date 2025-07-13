@@ -34,4 +34,8 @@ public class CommonUtils {
 
 		return imgDifference.getDiffSize();
 	}
+	
+	public void loadProperties() {
+		
+	}
 }
