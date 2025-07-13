@@ -1,5 +1,7 @@
 package tutorialsninja.register;
 
+import java.util.Properties;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -8,10 +10,12 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import base.Base;
+import utils.CommonUtils;
 
 public class TestCaseRegisterFunctionality009 extends Base {
 
 	WebDriver driver;
+	Properties prop;
 
 	@BeforeMethod
 	public void setUp() {
@@ -32,12 +36,12 @@ public class TestCaseRegisterFunctionality009 extends Base {
 	@Test
 	public void verifyRegistringAccountUsingExistingEmail() {
 
-		driver.findElement(By.id("input-firstname")).sendKeys("Arun");
-		driver.findElement(By.id("input-lastname")).sendKeys("Motoori");
-		driver.findElement(By.id("input-email")).sendKeys("amotooricap1@gmail.com");
-		driver.findElement(By.id("input-telephone")).sendKeys("1234567890");
-		driver.findElement(By.id("input-password")).sendKeys("12345");
-		driver.findElement(By.id("input-confirm")).sendKeys("12345");
+		driver.findElement(By.id("input-firstname")).sendKeys(prop.getProperty("firstName"));
+		driver.findElement(By.id("input-lastname")).sendKeys(prop.getProperty("lastName"));
+		driver.findElement(By.id("input-email")).sendKeys(prop.getProperty("existingEmail"));
+		driver.findElement(By.id("input-telephone")).sendKeys(prop.getProperty("telephoneNumber"));
+		driver.findElement(By.id("input-password")).sendKeys(prop.getProperty("validPassword"));
+		driver.findElement(By.id("input-confirm")).sendKeys(prop.getProperty("validPassword"));
 		driver.findElement(By.xpath("//input[@name='newsletter'][@value='1']")).click();
 		driver.findElement(By.name("agree")).click();
 		driver.findElement(By.xpath("//input[@value='Continue']")).click();
