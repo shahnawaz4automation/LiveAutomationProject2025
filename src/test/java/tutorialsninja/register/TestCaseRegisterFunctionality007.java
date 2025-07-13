@@ -10,6 +10,7 @@ import org.testng.annotations.Test;
 import base.Base;
 
 public class TestCaseRegisterFunctionality007 extends Base {
+	
 	WebDriver driver;
 
 	@BeforeMethod
