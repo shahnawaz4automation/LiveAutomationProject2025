@@ -1,6 +1,7 @@
 package tutorialsninja.register;
 
 import java.time.Duration;
+import java.util.Properties;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -17,14 +18,14 @@ import utils.CommonUtils;
 public class TestCaseRegisterFunctionality012 extends Base {
 
 	WebDriver driver;
+	String browserName;
+	Properties prop;
 
 	@BeforeMethod
 	public void setUp() {
-
-		String browserName = "chrome";
-
 		driver = openBrowserAndApplication();
-
+		browserName = Base.getBrowser();
+		prop = CommonUtils.loadProperties();
 		driver.findElement(By.xpath("//span[text()='My Account']")).click();
 		driver.findElement(By.linkText("Register")).click();
 	}
@@ -45,12 +46,12 @@ public class TestCaseRegisterFunctionality012 extends Base {
 			actions.sendKeys(Keys.TAB).perform();
 		}
 
-		actions.sendKeys("Arun").pause(Duration.ofSeconds(1)).sendKeys(Keys.TAB).pause(Duration.ofSeconds(1))
-				.sendKeys("Motoori").sendKeys(Keys.TAB).pause(Duration.ofSeconds(1))
+		actions.sendKeys(prop.getProperty("firstName")).pause(Duration.ofSeconds(1)).sendKeys(Keys.TAB).pause(Duration.ofSeconds(1))
+				.sendKeys(prop.getProperty("lastName")).sendKeys(Keys.TAB).pause(Duration.ofSeconds(1))
 				.sendKeys(CommonUtils.generateBrandNewEmail()).pause(Duration.ofSeconds(1)).sendKeys(Keys.TAB)
-				.pause(Duration.ofSeconds(1)).sendKeys("1234567890").pause(Duration.ofSeconds(1)).sendKeys(Keys.TAB)
-				.pause(Duration.ofSeconds(1)).sendKeys("12345").pause(Duration.ofSeconds(1)).sendKeys(Keys.TAB)
-				.pause(Duration.ofSeconds(1)).sendKeys("12345").pause(Duration.ofSeconds(1)).sendKeys(Keys.TAB)
+				.pause(Duration.ofSeconds(1)).sendKeys(prop.getProperty("telephoneNumber")).pause(Duration.ofSeconds(1)).sendKeys(Keys.TAB)
+				.pause(Duration.ofSeconds(1)).sendKeys(prop.getProperty("validPassword")).pause(Duration.ofSeconds(1)).sendKeys(Keys.TAB)
+				.pause(Duration.ofSeconds(1)).sendKeys(prop.getProperty("validPassword")).pause(Duration.ofSeconds(1)).sendKeys(Keys.TAB)
 				.pause(Duration.ofSeconds(1)).sendKeys(Keys.LEFT).pause(Duration.ofSeconds(1)).sendKeys(Keys.TAB)
 				.pause(Duration.ofSeconds(1)).sendKeys(Keys.TAB).pause(Duration.ofSeconds(1)).sendKeys(Keys.SPACE)
 				.pause(Duration.ofSeconds(1)).sendKeys(Keys.TAB).pause(Duration.ofSeconds(3)).sendKeys(Keys.ENTER)

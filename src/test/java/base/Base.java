@@ -13,7 +13,7 @@ import utils.CommonUtils;
 public class Base {
 
 	WebDriver driver;
-	String browserName;
+	static String browserName;
 	
 	public WebDriver openBrowserAndApplication() {
 
@@ -35,7 +35,8 @@ public class Base {
 		return driver;
 	}
 
-	public String getBrowser() {
+	public static String getBrowser() {
+		
 		return browserName;
 	}
 }
