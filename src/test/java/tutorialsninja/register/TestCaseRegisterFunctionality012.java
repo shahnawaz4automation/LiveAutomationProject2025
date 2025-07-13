@@ -24,8 +24,8 @@ public class TestCaseRegisterFunctionality012 extends Base {
 	@BeforeMethod
 	public void setUp() {
 		driver = openBrowserAndApplication();
-		browserName = Base.getBrowser();
 		prop = CommonUtils.loadProperties();
+		browserName = prop.getProperty(browserName);
 		driver.findElement(By.xpath("//span[text()='My Account']")).click();
 		driver.findElement(By.linkText("Register")).click();
 	}

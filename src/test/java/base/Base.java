@@ -13,7 +13,7 @@ import utils.CommonUtils;
 public class Base {
 
 	WebDriver driver;
-	static String browserName;
+	String browserName;
 	
 	public WebDriver openBrowserAndApplication() {
 
@@ -33,10 +33,5 @@ public class Base {
 		driver.get(prop.getProperty("appURL"));
 
 		return driver;
-	}
-
-	public static String getBrowser() {
-		
-		return browserName;
 	}
 }

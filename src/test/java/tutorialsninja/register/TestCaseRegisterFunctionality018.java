@@ -2,6 +2,7 @@ package tutorialsninja.register;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Properties;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -21,13 +22,15 @@ import utils.CommonUtils;
 public class TestCaseRegisterFunctionality018 extends Base {
 
 	WebDriver driver;
-	String browserName = getBrowser();
+	Properties prop;
+	String browserName;
 
 	@BeforeMethod
 	public void setUp() {
 
 		driver = openBrowserAndApplication();
-
+		prop = CommonUtils.loadProperties();
+		browserName = prop.getProperty(browserName);
 		driver.findElement(By.xpath("//span[text()='My Account']")).click();
 		driver.findElement(By.linkText("Register")).click();
 	}
