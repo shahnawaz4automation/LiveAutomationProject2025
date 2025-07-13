@@ -16,7 +16,7 @@ import utils.CommonUtils;
 public class TestCaseRegisterFunctionality010 extends Base {
 
 	WebDriver driver;
-	String browserName = getBrowser();
+	String browserName;
 	Properties prop;
 
 	@BeforeMethod
@@ -24,6 +24,7 @@ public class TestCaseRegisterFunctionality010 extends Base {
 
 		driver = openBrowserAndApplication();
 		prop = CommonUtils.loadProperties();
+		browserName = prop.getProperty(browserName);
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("arguments[0].click();", driver.findElement(By.xpath("//span[text()='My Account']")));
 

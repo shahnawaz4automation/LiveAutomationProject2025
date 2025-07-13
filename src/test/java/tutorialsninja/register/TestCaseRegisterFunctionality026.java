@@ -2,6 +2,7 @@ package tutorialsninja.register;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Properties;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -20,13 +21,15 @@ import utils.CommonUtils;
 public class TestCaseRegisterFunctionality026 extends Base {
 
 	WebDriver driver;
-	String browserName = getBrowser();
+	String browserName;
+	Properties prop;
 
 	@BeforeMethod
 	public void setUp() {
 
 		driver = openBrowserAndApplication();
-
+		prop = CommonUtils.loadProperties();
+		browserName = prop.getProperty(browserName);
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("arguments[0].click();", driver.findElement(By.xpath("//span[text()='My Account']")));
 		driver.findElement(By.linkText("Register")).click();
