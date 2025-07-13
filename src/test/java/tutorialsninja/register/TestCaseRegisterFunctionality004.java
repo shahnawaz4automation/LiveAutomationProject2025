@@ -1,5 +1,7 @@
 package tutorialsninja.register;
 
+import java.util.Properties;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -17,7 +19,6 @@ public class TestCaseRegisterFunctionality004 extends Base {
 	public void setUp() {
 
 		driver = openBrowserAndApplication();
-
 		driver.findElement(By.xpath("//span[text()='My Account']")).click();
 		driver.findElement(By.linkText("Register")).click();
 	}
