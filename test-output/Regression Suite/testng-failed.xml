@@ -3,10 +3,17 @@
 <suite parallel="classes" name="Failed suite [Regression Suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" parallel="classes" name="Test(failed)">
     <classes>
+      <class name="tutorialsninja.register.TestCaseRegisterFunctionality009">
+        <methods>
+          <include name="setUp"/>
+          <include name="verifyRegistringAccountUsingExistingEmail"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- tutorialsninja.register.TestCaseRegisterFunctionality009 -->
       <class name="tutorialsninja.register.TestCaseRegisterFunctionality019">
         <methods>
-          <include name="verifyLeadingAndTrailingSpacesWhileRegisteringAccount"/>
           <include name="tearDown"/>
+          <include name="verifyLeadingAndTrailingSpacesWhileRegisteringAccount"/>
           <include name="setUp"/>
         </methods>
       </class> <!-- tutorialsninja.register.TestCaseRegisterFunctionality019 -->
@@ -17,6 +24,13 @@
           <include name="verifyUIOfRegisterAccountPage"/>
         </methods>
       </class> <!-- tutorialsninja.register.TestCaseRegisterFunctionality026 -->
+      <class name="tutorialsninja.register.TestCaseRegisterFunctionality012">
+        <methods>
+          <include name="tearDown"/>
+          <include name="setUp"/>
+          <include name="verifyRegisteringAccountUsingKeyboardKeys"/>
+        </methods>
+      </class> <!-- tutorialsninja.register.TestCaseRegisterFunctionality012 -->
       <class name="tutorialsninja.register.TestCaseRegisterFunctionality010">
         <methods>
           <include name="setUp"/>
@@ -24,6 +38,13 @@
           <include name="tearDown"/>
         </methods>
       </class> <!-- tutorialsninja.register.TestCaseRegisterFunctionality010 -->
+      <class name="tutorialsninja.register.TestCaseRegisterFunctionality002">
+        <methods>
+          <include name="tearDown"/>
+          <include name="setUp"/>
+          <include name="verifyRegisteringWithAllFields"/>
+        </methods>
+      </class> <!-- tutorialsninja.register.TestCaseRegisterFunctionality002 -->
       <class name="tutorialsninja.register.TestCaseRegisterFunctionality018">
         <methods>
           <include name="setUp"/>
@@ -31,13 +52,6 @@
           <include name="verifyRegisteringAccountFieldsHeightWidthAligment"/>
         </methods>
       </class> <!-- tutorialsninja.register.TestCaseRegisterFunctionality018 -->
-      <class name="tutorialsninja.register.TestCaseRegisterFunctionality006">
-        <methods>
-          <include name="verifyRegisteringAccountBySayingNoToNewsletter"/>
-          <include name="setUp"/>
-          <include name="tearDown"/>
-        </methods>
-      </class> <!-- tutorialsninja.register.TestCaseRegisterFunctionality006 -->
       <class name="tutorialsninja.register.TestCaseRegisterFunctionality011">
         <methods>
           <include name="verifyRegisterAccountByProvidingInvalidTelephoneNumber"/>
@@ -45,13 +59,6 @@
           <include name="tearDown"/>
         </methods>
       </class> <!-- tutorialsninja.register.TestCaseRegisterFunctionality011 -->
-      <class name="tutorialsninja.register.TestCaseRegisterFunctionality001">
-        <methods>
-          <include name="tearDown"/>
-          <include name="setUp"/>
-          <include name="verifyRegisteringWithMandatoyFields"/>
-        </methods>
-      </class> <!-- tutorialsninja.register.TestCaseRegisterFunctionality001 -->
       <class name="tutorialsninja.register.TestCaseRegisterFunctionality017">
         <methods>
           <include name="verifyRegisteringAccountAndCheckingPasswordComplexityStandards" invocation-numbers="0 1 2 3 4"/>
@@ -59,6 +66,13 @@
           <include name="tearDown"/>
         </methods>
       </class> <!-- tutorialsninja.register.TestCaseRegisterFunctionality017 -->
+      <class name="tutorialsninja.register.TestCaseRegisterFunctionality005">
+        <methods>
+          <include name="verifyRegisteringAccountBySubscribingToNewsletter"/>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- tutorialsninja.register.TestCaseRegisterFunctionality005 -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Regression Suite] -->

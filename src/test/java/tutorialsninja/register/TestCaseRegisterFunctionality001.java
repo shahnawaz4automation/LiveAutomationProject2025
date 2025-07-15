@@ -10,6 +10,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import base.Base;
+import pages.LandingPage;
 import utils.CommonUtils;
 
 public class TestCaseRegisterFunctionality001 extends Base {
@@ -21,7 +22,9 @@ public class TestCaseRegisterFunctionality001 extends Base {
 	public void setUp() {
 		driver = openBrowserAndApplication();
 		prop = CommonUtils.loadProperties();
-		driver.findElement(By.xpath("//span[text()='My Account']")).click();
+		LandingPage landingPage = new LandingPage(driver);
+		landingPage.clickOnMyAccount();
+		//driver.findElement(By.xpath("//span[text()='My Account']")).click();
 		driver.findElement(By.linkText("Register")).click();
 	}
 
