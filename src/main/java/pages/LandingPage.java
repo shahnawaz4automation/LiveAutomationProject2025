@@ -16,10 +16,18 @@ public class LandingPage {
 	}
 
 	@FindBy(xpath = "//span[text()='My Account']")
-	public WebElement myAccountDropMenu;
+	private WebElement myAccountDropMenu;
 
 	public void clickOnMyAccount() {
 		myAccountDropMenu.click();
 	}
+	
+	@FindBy(linkText="Register")
+	private WebElement registerOption;
+	
+	public void selectRegisterOption() {
+		registerOption.click();
+	}
+	
 
 }

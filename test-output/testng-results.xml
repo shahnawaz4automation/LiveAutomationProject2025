@@ -2,20 +2,20 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-07-15T21:49:09 IST" name="Default suite" finished-at="2025-07-15T21:49:18 IST" duration-ms="8821">
+  <suite started-at="2025-07-15T22:05:24 IST" name="Default suite" finished-at="2025-07-15T22:05:32 IST" duration-ms="7940">
     <groups>
     </groups>
-    <test started-at="2025-07-15T21:49:09 IST" name="Default test" finished-at="2025-07-15T21:49:18 IST" duration-ms="8821">
+    <test started-at="2025-07-15T22:05:24 IST" name="Default test" finished-at="2025-07-15T22:05:32 IST" duration-ms="7940">
       <class name="tutorialsninja.register.TestCaseRegisterFunctionality001">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:tutorialsninja.register.TestCaseRegisterFunctionality001@7c7b252e]" started-at="2025-07-15T21:49:09 IST" name="setUp" finished-at="2025-07-15T21:49:15 IST" duration-ms="5357" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:tutorialsninja.register.TestCaseRegisterFunctionality001@7c7b252e]" started-at="2025-07-15T22:05:24 IST" name="setUp" finished-at="2025-07-15T22:05:29 IST" duration-ms="4678" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="verifyRegisteringWithMandatoyFields()[pri:0, instance:tutorialsninja.register.TestCaseRegisterFunctionality001@7c7b252e]" started-at="2025-07-15T21:49:15 IST" name="verifyRegisteringWithMandatoyFields" finished-at="2025-07-15T21:49:18 IST" duration-ms="2985" status="PASS">
+        <test-method signature="verifyRegisteringWithMandatoyFields()[pri:0, instance:tutorialsninja.register.TestCaseRegisterFunctionality001@7c7b252e]" started-at="2025-07-15T22:05:29 IST" name="verifyRegisteringWithMandatoyFields" finished-at="2025-07-15T22:05:31 IST" duration-ms="2770" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyRegisteringWithMandatoyFields -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:tutorialsninja.register.TestCaseRegisterFunctionality001@7c7b252e]" started-at="2025-07-15T21:49:18 IST" name="tearDown" finished-at="2025-07-15T21:49:18 IST" duration-ms="389" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:tutorialsninja.register.TestCaseRegisterFunctionality001@7c7b252e]" started-at="2025-07-15T22:05:31 IST" name="tearDown" finished-at="2025-07-15T22:05:32 IST" duration-ms="392" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
