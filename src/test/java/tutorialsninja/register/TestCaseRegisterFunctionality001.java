@@ -24,7 +24,6 @@ public class TestCaseRegisterFunctionality001 extends Base {
 		prop = CommonUtils.loadProperties();
 		LandingPage landingPage = new LandingPage(driver);
 		landingPage.clickOnMyAccount();
-		//driver.findElement(By.xpath("//span[text()='My Account']")).click();
 		landingPage.selectRegisterOption();
 	}
 
