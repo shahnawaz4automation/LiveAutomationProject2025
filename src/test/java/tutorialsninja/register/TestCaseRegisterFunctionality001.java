@@ -25,7 +25,7 @@ public class TestCaseRegisterFunctionality001 extends Base {
 		LandingPage landingPage = new LandingPage(driver);
 		landingPage.clickOnMyAccount();
 		landingPage.selectRegisterOption();
-		System.out.println("-");
+		//System.out.println("-");
 	}
 
 	@AfterMethod
