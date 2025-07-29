@@ -25,9 +25,11 @@ public class LandingPage {
 	@FindBy(linkText="Register")
 	private WebElement registerOption;
 	
-	public void selectRegisterOption() {
+	public RegisterPage selectRegisterOption() {
 		registerOption.click();
+		return new RegisterPage(driver);
 	}
+	
 	
 
 }
