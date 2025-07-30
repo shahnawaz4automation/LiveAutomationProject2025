@@ -2,7 +2,6 @@ package tutorialsninja.register;
 
 import java.util.Properties;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -10,22 +9,29 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import base.Base;
+import pages.AccountPage;
+import pages.AccountSuccessPage;
 import pages.LandingPage;
+import pages.RegisterPage;
 import utils.CommonUtils;
 
 public class TestCaseRegisterFunctionality001 extends Base {
 
 	WebDriver driver;
 	Properties prop;
+	LandingPage landingPage;
+	RegisterPage registerPage;
+	AccountSuccessPage accountSuccessPage;
+	AccountPage accountPage;
 
 	@BeforeMethod
 	public void setUp() {
 		driver = openBrowserAndApplication();
 		prop = CommonUtils.loadProperties();
-		LandingPage landingPage = new LandingPage(driver);
+		landingPage = new LandingPage(driver);
 		landingPage.clickOnMyAccount();
-		landingPage.selectRegisterOption();
-		
+		registerPage = landingPage.selectRegisterOption();
+
 	}
 
 	@AfterMethod
@@ -38,18 +44,18 @@ public class TestCaseRegisterFunctionality001 extends Base {
 	@Test
 	public void verifyRegisteringWithMandatoyFields() {
 
-		driver.findElement(By.id("input-firstname")).sendKeys(prop.getProperty("firstName"));
-		driver.findElement(By.id("input-lastname")).sendKeys(prop.getProperty("lastName"));
-		driver.findElement(By.id("input-email")).sendKeys(CommonUtils.generateBrandNewEmail());
-		driver.findElement(By.id("input-telephone")).sendKeys(prop.getProperty("telephoneNumber"));
-		driver.findElement(By.id("input-password")).sendKeys(prop.getProperty("validPassword"));
-		driver.findElement(By.id("input-confirm")).sendKeys(prop.getProperty("validPassword"));
-		driver.findElement(By.xpath("//input[@type='checkbox']")).click();
-		driver.findElement(By.xpath("//input[@value='Continue']")).click();
-
-		Assert.assertEquals(driver.findElement(By.linkText("Logout")).getText(), "Logout");
-
-		String actualTextDetails = driver.findElement(By.xpath("//div[@id='content']")).getText();
+		registerPage.enterFirstName(prop.getProperty("firstName"));
+		registerPage.enterLastName(prop.getProperty("lastName"));
+		registerPage.enterEmail(CommonUtils.generateBrandNewEmail());
+		registerPage.enterTelephoneNumber(prop.getProperty("telephoneNumber"));
+		registerPage.enterPassword(prop.getProperty("validPassword"));
+		registerPage.enterConfirmField(prop.getProperty("validPassword"));
+		registerPage.selectPrivacyPolicy();
+		accountSuccessPage = registerPage.clickOnContinueButton();
+		Assert.assertTrue(accountSuccessPage.isUserLoggedIn());
+		String expectedHeading = "Your Account Has Been Created!";
+		Assert.assertEquals(accountSuccessPage.getPageHeading(), expectedHeading);
+		String actualTextDetails = accountSuccessPage.getPageContent();
 
 		Assert.assertTrue(actualTextDetails.contains("Your Account Has Been Created!"));
 		Assert.assertTrue(
@@ -60,9 +66,9 @@ public class TestCaseRegisterFunctionality001 extends Base {
 				"If you have ANY questions about the operation of this online shop, please e-mail the store owner."));
 		Assert.assertTrue(actualTextDetails.contains("contact us."));
 
-		driver.findElement(By.linkText("Continue")).click();
+		accountPage = accountSuccessPage.clickOnContinueButton();
 
-		Assert.assertTrue(driver.findElement(By.linkText("Edit your account information")).isDisplayed());
+		Assert.assertTrue(accountPage.didWeNavigateToAccountPage());
 
 	}
 }

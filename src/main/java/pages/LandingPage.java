@@ -27,6 +27,10 @@ public class LandingPage {
 	
 	public RegisterPage selectRegisterOption() {
 		registerOption.click();
+		/*After clicking on the register option, we know that we will be taken to register page. 
+		So we create a object for register page. 
+		and return type should be register page
+		- new keyword will create object for AccountSuccessPage*/
 		return new RegisterPage(driver);
 	}
 	
