@@ -1,4 +1,4 @@
-package tutorialsninja.register;
+package tutorialsninja.tests;
 
 import java.util.Properties;
 
@@ -7,12 +7,13 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import base.Base;
 import utils.CommonUtils;
 
-public class TestCaseRegisterFunctionality011 extends Base {
+public class TestCaseRegisterFunctionality017 extends Base {
 
 	WebDriver driver;
 	Properties prop;
@@ -33,35 +34,43 @@ public class TestCaseRegisterFunctionality011 extends Base {
 		}
 	}
 
-	@Test
-	public void verifyRegisterAccountByProvidingInvalidTelephoneNumber() {
+	@Test(dataProvider = "passwordSupplier")
+	public void verifyRegisteringAccountAndCheckingPasswordComplexityStandards(String passwordText) {
 
 		driver.findElement(By.id("input-firstname")).sendKeys(prop.getProperty("firstName"));
 		driver.findElement(By.id("input-lastname")).sendKeys(prop.getProperty("lastName"));
 		driver.findElement(By.id("input-email")).sendKeys(CommonUtils.generateBrandNewEmail());
 		driver.findElement(By.id("input-telephone")).sendKeys(prop.getProperty("telephoneNumber"));
-		driver.findElement(By.id("input-password")).sendKeys(prop.getProperty("validPassword"));
-		driver.findElement(By.id("input-confirm")).sendKeys(prop.getProperty("validPassword"));
 		driver.findElement(By.xpath("//input[@name='newsletter'][@value='1']")).click();
 		driver.findElement(By.name("agree")).click();
+		driver.findElement(By.id("input-password")).sendKeys(passwordText);
+		driver.findElement(By.id("input-confirm")).sendKeys(passwordText);
 		driver.findElement(By.xpath("//input[@value='Continue']")).click();
 
-		String expectedWarningMessage = "Telephone number does not appear to be valid";
+		String warningMessage = "Password entered is not matching the Complexity standards";
 
-		// Writing below code avoids NoSuchElementException. Otherwise browser will not
-		// close and the WebDriver session will not end.
-		boolean state = false;
+		boolean status = false;
+
 		try {
 			String actualWarningMessage = driver
-					.findElement(By.xpath("//input[@id='input-telephone']/following-sibling::div")).getText();
-			if (actualWarningMessage.equals(expectedWarningMessage)) {
-				state = true;
-			}
+					.findElement(By.xpath("//input[@id='input-password']/following-sibling::div")).getText();
+			Assert.assertEquals(actualWarningMessage, warningMessage);
+			status = true;
 		} catch (Exception e) {
-			state = false;
+			status = false;
 		}
 
-		Assert.assertTrue(state);
+		Assert.assertTrue(status);
+
+		Assert.assertFalse(
+				driver.findElement(By.xpath("//ul[@class='breadcrumb']//a[text()='Success']")).isDisplayed());
 
 	}
+
+	@DataProvider(name = "passwordSupplier")
+	public Object[][] supplyPasswords() {
+		Object[][] data = { { "12345" }, { "abcdefghi" }, { "abcd1234" }, { "abcd123$" }, { "ABCD456#" } };
+		return data;
+	}
+
 }

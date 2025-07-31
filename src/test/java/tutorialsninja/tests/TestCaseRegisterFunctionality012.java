@@ -1,4 +1,4 @@
-package tutorialsninja.register;
+package tutorialsninja.tests;
 
 import java.time.Duration;
 import java.util.Properties;

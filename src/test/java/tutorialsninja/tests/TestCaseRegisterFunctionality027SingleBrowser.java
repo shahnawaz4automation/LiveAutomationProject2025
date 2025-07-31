@@ -1,4 +1,4 @@
-package tutorialsninja.register;
+package tutorialsninja.tests;
 
 import java.util.Properties;
 
@@ -7,13 +7,12 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import base.Base;
 import utils.CommonUtils;
 
-public class TestCaseRegisterFunctionality017 extends Base {
+public class TestCaseRegisterFunctionality027SingleBrowser extends Base {
 
 	WebDriver driver;
 	Properties prop;
@@ -34,43 +33,23 @@ public class TestCaseRegisterFunctionality017 extends Base {
 		}
 	}
 
-	@Test(dataProvider = "passwordSupplier")
-	public void verifyRegisteringAccountAndCheckingPasswordComplexityStandards(String passwordText) {
+	@Test
+	public void verifyRegisteringAccountInDifferentTestEnvironments() {
 
 		driver.findElement(By.id("input-firstname")).sendKeys(prop.getProperty("firstName"));
 		driver.findElement(By.id("input-lastname")).sendKeys(prop.getProperty("lastName"));
 		driver.findElement(By.id("input-email")).sendKeys(CommonUtils.generateBrandNewEmail());
 		driver.findElement(By.id("input-telephone")).sendKeys(prop.getProperty("telephoneNumber"));
+		driver.findElement(By.id("input-password")).sendKeys(prop.getProperty("validPassword"));
+		driver.findElement(By.id("input-confirm")).sendKeys(prop.getProperty("validPassword"));
 		driver.findElement(By.xpath("//input[@name='newsletter'][@value='1']")).click();
 		driver.findElement(By.name("agree")).click();
-		driver.findElement(By.id("input-password")).sendKeys(passwordText);
-		driver.findElement(By.id("input-confirm")).sendKeys(passwordText);
 		driver.findElement(By.xpath("//input[@value='Continue']")).click();
 
-		String warningMessage = "Password entered is not matching the Complexity standards";
-
-		boolean status = false;
-
-		try {
-			String actualWarningMessage = driver
-					.findElement(By.xpath("//input[@id='input-password']/following-sibling::div")).getText();
-			Assert.assertEquals(actualWarningMessage, warningMessage);
-			status = true;
-		} catch (Exception e) {
-			status = false;
-		}
-
-		Assert.assertTrue(status);
-
-		Assert.assertFalse(
-				driver.findElement(By.xpath("//ul[@class='breadcrumb']//a[text()='Success']")).isDisplayed());
+		Assert.assertTrue(driver.findElement(By.xpath("//a[@class='list-group-item'][text()='Logout']")).isDisplayed());
+		Assert.assertTrue(driver.findElement(By.xpath("//ul[@class='breadcrumb']//a[text()='Success']")).isDisplayed());
+		driver.findElement(By.xpath("//a[text()='Continue']")).click();
+		Assert.assertEquals(driver.getTitle(), "My Account");
 
 	}
-
-	@DataProvider(name = "passwordSupplier")
-	public Object[][] supplyPasswords() {
-		Object[][] data = { { "12345" }, { "abcdefghi" }, { "abcd1234" }, { "abcd123$" }, { "ABCD456#" } };
-		return data;
-	}
-
 }

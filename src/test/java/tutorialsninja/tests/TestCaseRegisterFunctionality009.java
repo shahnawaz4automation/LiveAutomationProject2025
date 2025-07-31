@@ -1,4 +1,4 @@
-package tutorialsninja.register;
+package tutorialsninja.tests;
 
 import java.util.Properties;
 
@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 import base.Base;
 import utils.CommonUtils;
 
-public class TestCaseRegisterFunctionality027SingleBrowser extends Base {
+public class TestCaseRegisterFunctionality009 extends Base {
 
 	WebDriver driver;
 	Properties prop;
@@ -21,7 +21,7 @@ public class TestCaseRegisterFunctionality027SingleBrowser extends Base {
 	public void setUp() {
 
 		driver = openBrowserAndApplication();
-		prop = CommonUtils.loadProperties();
+
 		driver.findElement(By.xpath("//span[text()='My Account']")).click();
 		driver.findElement(By.linkText("Register")).click();
 	}
@@ -34,11 +34,11 @@ public class TestCaseRegisterFunctionality027SingleBrowser extends Base {
 	}
 
 	@Test
-	public void verifyRegisteringAccountInDifferentTestEnvironments() {
+	public void verifyRegistringAccountUsingExistingEmail() {
 
 		driver.findElement(By.id("input-firstname")).sendKeys(prop.getProperty("firstName"));
 		driver.findElement(By.id("input-lastname")).sendKeys(prop.getProperty("lastName"));
-		driver.findElement(By.id("input-email")).sendKeys(CommonUtils.generateBrandNewEmail());
+		driver.findElement(By.id("input-email")).sendKeys(prop.getProperty("existingEmail"));
 		driver.findElement(By.id("input-telephone")).sendKeys(prop.getProperty("telephoneNumber"));
 		driver.findElement(By.id("input-password")).sendKeys(prop.getProperty("validPassword"));
 		driver.findElement(By.id("input-confirm")).sendKeys(prop.getProperty("validPassword"));
@@ -46,10 +46,12 @@ public class TestCaseRegisterFunctionality027SingleBrowser extends Base {
 		driver.findElement(By.name("agree")).click();
 		driver.findElement(By.xpath("//input[@value='Continue']")).click();
 
-		Assert.assertTrue(driver.findElement(By.xpath("//a[@class='list-group-item'][text()='Logout']")).isDisplayed());
-		Assert.assertTrue(driver.findElement(By.xpath("//ul[@class='breadcrumb']//a[text()='Success']")).isDisplayed());
-		driver.findElement(By.xpath("//a[text()='Continue']")).click();
-		Assert.assertEquals(driver.getTitle(), "My Account");
+		String expectedWarningMessage = "Warning: E-Mail Address is already registered!";
+
+		Assert.assertEquals(
+				driver.findElement(By.xpath("//div[@class='alert alert-danger alert-dismissible']")).getText(),
+				expectedWarningMessage);
 
 	}
+
 }

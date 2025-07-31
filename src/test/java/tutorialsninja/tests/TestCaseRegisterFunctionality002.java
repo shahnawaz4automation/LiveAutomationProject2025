@@ -1,4 +1,4 @@
-package tutorialsninja.register;
+package tutorialsninja.tests;
 
 import java.util.Properties;
 
@@ -12,11 +12,9 @@ import org.testng.annotations.Test;
 import base.Base;
 import utils.CommonUtils;
 
-public class TestCaseRegisterFunctionality005 extends Base {
-	
+public class TestCaseRegisterFunctionality002 extends Base {
 	WebDriver driver;
 	Properties prop;
-
 	@BeforeMethod
 	public void setUp() {
 
@@ -34,7 +32,7 @@ public class TestCaseRegisterFunctionality005 extends Base {
 	}
 
 	@Test
-	public void verifyRegisteringAccountBySubscribingToNewsletter() {
+	public void verifyRegisteringWithAllFields() {
 
 		driver.findElement(By.id("input-firstname")).sendKeys(prop.getProperty("firstName"));
 		driver.findElement(By.id("input-lastname")).sendKeys(prop.getProperty("lastName"));
@@ -42,16 +40,28 @@ public class TestCaseRegisterFunctionality005 extends Base {
 		driver.findElement(By.id("input-telephone")).sendKeys(prop.getProperty("telephoneNumber"));
 		driver.findElement(By.id("input-password")).sendKeys(prop.getProperty("validPassword"));
 		driver.findElement(By.id("input-confirm")).sendKeys(prop.getProperty("validPassword"));
-		driver.findElement(By.xpath("//input[@name='newsletter'][@value='1']")).click();
-		driver.findElement(By.name("agree")).click();
+		driver.findElement(By.xpath("//input[@type='checkbox']")).click();
 
+		driver.findElement(By.xpath("//label[text()='Yes']")).click();
 		driver.findElement(By.xpath("//input[@value='Continue']")).click();
-		driver.findElement(By.linkText("Continue")).click();
-		driver.findElement(By.linkText("Subscribe / unsubscribe to newsletter")).click();
 
+		Assert.assertEquals(driver.findElement(By.linkText("Logout")).getText(), "Logout",
+				"Asseted Logout option is found");
+
+		String actualTextDetails = driver.findElement(By.xpath("//div[@id='content']")).getText();
+
+		Assert.assertTrue(actualTextDetails.contains("Your Account Has Been Created!"));
 		Assert.assertTrue(
-				driver.findElement(By.xpath("//ul[@class='breadcrumb']//a[text()='Newsletter']")).isDisplayed());
-		Assert.assertTrue(driver.findElement(By.xpath("//input[@name='newsletter'][@value='1']")).isSelected());
+				actualTextDetails.contains("Congratulations! Your new account has been successfully created!"));
+		Assert.assertTrue(actualTextDetails.contains(
+				"You can now take advantage of member privileges to enhance your online shopping experience with us."));
+		Assert.assertTrue(actualTextDetails.contains(
+				"If you have ANY questions about the operation of this online shop, please e-mail the store owner."));
+		Assert.assertTrue(actualTextDetails.contains("contact us."));
+
+		driver.findElement(By.linkText("Continue")).click();
+
+		Assert.assertTrue(driver.findElement(By.linkText("Edit your account information")).isDisplayed());
 
 	}
 }

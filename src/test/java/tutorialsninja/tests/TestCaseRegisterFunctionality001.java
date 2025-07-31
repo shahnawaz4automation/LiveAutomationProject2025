@@ -1,4 +1,4 @@
-package tutorialsninja.register;
+package tutorialsninja.tests;
 
 import java.util.Properties;
 
@@ -31,7 +31,6 @@ public class TestCaseRegisterFunctionality001 extends Base {
 		landingPage = new LandingPage(driver);
 		landingPage.clickOnMyAccount();
 		registerPage = landingPage.selectRegisterOption();
-
 	}
 
 	@AfterMethod
@@ -43,7 +42,6 @@ public class TestCaseRegisterFunctionality001 extends Base {
 
 	@Test
 	public void verifyRegisteringWithMandatoyFields() {
-
 		registerPage.enterFirstName(prop.getProperty("firstName"));
 		registerPage.enterLastName(prop.getProperty("lastName"));
 		registerPage.enterEmail(CommonUtils.generateBrandNewEmail());
@@ -56,7 +54,6 @@ public class TestCaseRegisterFunctionality001 extends Base {
 		String expectedHeading = "Your Account Has Been Created!";
 		Assert.assertEquals(accountSuccessPage.getPageHeading(), expectedHeading);
 		String actualTextDetails = accountSuccessPage.getPageContent();
-
 		Assert.assertTrue(actualTextDetails.contains("Your Account Has Been Created!"));
 		Assert.assertTrue(
 				actualTextDetails.contains("Congratulations! Your new account has been successfully created!"));
@@ -65,10 +62,7 @@ public class TestCaseRegisterFunctionality001 extends Base {
 		Assert.assertTrue(actualTextDetails.contains(
 				"If you have ANY questions about the operation of this online shop, please e-mail the store owner."));
 		Assert.assertTrue(actualTextDetails.contains("contact us."));
-
 		accountPage = accountSuccessPage.clickOnContinueButton();
-
 		Assert.assertTrue(accountPage.didWeNavigateToAccountPage());
-
 	}
 }

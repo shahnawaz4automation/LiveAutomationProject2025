@@ -1,4 +1,4 @@
-package tutorialsninja.register;
+package tutorialsninja.tests;
 
 import java.util.Properties;
 
@@ -12,8 +12,8 @@ import org.testng.annotations.Test;
 import base.Base;
 import utils.CommonUtils;
 
-public class TestCaseRegisterFunctionality008 extends Base {
-
+public class TestCaseRegisterFunctionality005 extends Base {
+	
 	WebDriver driver;
 	Properties prop;
 
@@ -34,22 +34,24 @@ public class TestCaseRegisterFunctionality008 extends Base {
 	}
 
 	@Test
-	public void verifyRegisteringAccountByProvidingMismatchingPasswords() {
+	public void verifyRegisteringAccountBySubscribingToNewsletter() {
 
 		driver.findElement(By.id("input-firstname")).sendKeys(prop.getProperty("firstName"));
 		driver.findElement(By.id("input-lastname")).sendKeys(prop.getProperty("lastName"));
 		driver.findElement(By.id("input-email")).sendKeys(CommonUtils.generateBrandNewEmail());
 		driver.findElement(By.id("input-telephone")).sendKeys(prop.getProperty("telephoneNumber"));
 		driver.findElement(By.id("input-password")).sendKeys(prop.getProperty("validPassword"));
-		driver.findElement(By.id("input-confirm")).sendKeys(prop.getProperty("mismatchingPassword"));
+		driver.findElement(By.id("input-confirm")).sendKeys(prop.getProperty("validPassword"));
 		driver.findElement(By.xpath("//input[@name='newsletter'][@value='1']")).click();
 		driver.findElement(By.name("agree")).click();
+
 		driver.findElement(By.xpath("//input[@value='Continue']")).click();
+		driver.findElement(By.linkText("Continue")).click();
+		driver.findElement(By.linkText("Subscribe / unsubscribe to newsletter")).click();
 
-		String expectedWarningMessage = "Password confirmation does not match password!";
+		Assert.assertTrue(
+				driver.findElement(By.xpath("//ul[@class='breadcrumb']//a[text()='Newsletter']")).isDisplayed());
+		Assert.assertTrue(driver.findElement(By.xpath("//input[@name='newsletter'][@value='1']")).isSelected());
 
-		Assert.assertEquals(
-				driver.findElement(By.xpath("//input[@id='input-confirm']/following-sibling::div")).getText(),
-				expectedWarningMessage);
 	}
 }
