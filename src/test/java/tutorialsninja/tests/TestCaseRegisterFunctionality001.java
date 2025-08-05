@@ -39,7 +39,7 @@ public class TestCaseRegisterFunctionality001 extends Base {
 			driver.quit();
 		}
 	}
-
+ 
 	@Test
 	public void verifyRegisteringWithMandatoyFields() {
 		registerPage.enterFirstName(prop.getProperty("firstName"));
