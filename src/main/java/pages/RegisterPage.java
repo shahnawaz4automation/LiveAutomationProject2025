@@ -69,4 +69,11 @@ public class RegisterPage {
 		continueButton.click();
 		return new AccountSuccessPage(driver);
 	}
+	
+	@FindBy(xpath = "//input[@name='newsletter' and @value='1']")
+	private WebElement yesNewsLetterOption;
+	
+	public void selectYesNewsLetterOPtion() {
+		yesNewsLetterOption.click();
+	}
 }
