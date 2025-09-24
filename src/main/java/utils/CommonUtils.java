@@ -13,6 +13,7 @@ import ru.yandex.qatools.ashot.comparison.ImageDiff;
 import ru.yandex.qatools.ashot.comparison.ImageDiffer;
 
 public class CommonUtils {
+	
 	public static String generateBrandNewEmail() {
 		return new Date().toString().replaceAll("\\s", "").replaceAll("\\:", "") + "@email.com";
 	}
@@ -39,13 +40,20 @@ public class CommonUtils {
 
 	public static Properties loadProperties() {
 		Properties prop = new Properties();
-		FileReader fr;
 		try {
-			fr = new FileReader(System.getProperty("user.dir") + "\\src\\test\\resources\\projectdata.properties");
+			FileReader fr = new FileReader(System.getProperty("user.dir") + "\\src\\test\\resources\\projectdata.properties");
 			prop.load(fr);
 		} catch (IOException e) {
 
 		}
+		return prop;
+		
+	}
+	
+	public static Properties loadProperties1() throws IOException {
+		Properties prop = new Properties();
+		FileReader fr = new FileReader(System.getProperty("user.dir") + "\\src\\test\\resources\\projectdata.properties");
+		prop.load(fr);
 		return prop;
 	}
 }
