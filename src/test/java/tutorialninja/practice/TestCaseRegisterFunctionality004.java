@@ -26,7 +26,9 @@ public class TestCaseRegisterFunctionality004 extends Base {
 	@AfterMethod
 	public void tearDown() {
 		if (driver != null) {
+			//if driver is not null quit it.
 			driver.quit();
+		
 		}
 	}
 
