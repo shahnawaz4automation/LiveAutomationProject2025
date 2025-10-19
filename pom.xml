@@ -77,6 +77,12 @@
 			<artifactId>extentreports</artifactId>
 			<version>5.1.2</version>
 		</dependency>
+		<!-- ChainTest Library -->
+       <dependency>
+           <groupId>com.aventstack</groupId>
+           <artifactId>chaintest-testng</artifactId>
+           <version>1.0.9</version>
+       </dependency>
 	</dependencies>
 
 	<build>
